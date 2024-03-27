@@ -275,6 +275,45 @@
 
       // Вызываем апдейт при входе на страницу и изменений размеров окна браузера
       function Update() {
+        // Фиксируем экран с игрой
+        var lockCanvasText = 'all';
+
+        var desktopStrings = ["pc", "desktop", "computer", "laptop", "windows", "пк", "компьютер", "виндовс", "оба", "все", "all", "полн"];
+        var mobileStrings = ["mobile", "phone", "handheld", "android", "телефон", "мобиль", "андроид", "оба", "все", "all", "полн"];
+        var touchStrings = ["touch", "тач"];
+        var navigatorStrings = ["nav", "навиг", "userAgent"];
+
+        if(touchStrings.some(i => lockCanvasText.includes(i))) {
+          if(isDeviceTouch) {
+            if(mobileStrings.some(i => lockCanvasText.includes(i))) {
+              lock(canvas, 430 / 932 );
+            }
+          } else {
+            if(desktopStrings.some(i => lockCanvasText.includes(i))) {
+              lock(canvas, 430 / 932 );
+            }
+          }
+        } else if(navigatorStrings.some(i => lockCanvasText.includes(i))) {
+          if(isDeviceNavigator) {
+            if(mobileStrings.some(i => lockCanvasText.includes(i))) {
+              lock(canvas, 430 / 932 );
+            }
+          } else {
+            if(desktopStrings.some(i => lockCanvasText.includes(i))) {
+              lock(canvas, 430 / 932 );
+            }
+          }
+        } else {
+          if(isDeviceNavigator) {
+            if(mobileStrings.some(i => lockCanvasText.includes(i))) {
+              lock(canvas, 430 / 932 );
+            }
+          } else {
+            if(desktopStrings.some(i => lockCanvasText.includes(i))) {
+              lock(canvas, 430 / 932 );
+            }
+          }
+        }
 
         lock(loading, 9/16);
         if(loading_bar_style == 0) {
